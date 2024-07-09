@@ -24,8 +24,8 @@ A job portal built with React, TypeScript, Material UI, and JWT authentication.
 1. Clone the repository
 
    ```bash
-   git clone https://github.com/shourovys/job-portal.git
-   cd job-portal
+   git clone https://github.com/shourovys/techforing-task-1-frontend
+   cd techforing-task-1-frontend
 
    ```
 
@@ -34,4 +34,4 @@ A job portal built with React, TypeScript, Material UI, and JWT authentication.
    npm i
    npm run start
    ```
-"# techforing-task-1-frontend" 
+   "# techforing-task-1-frontend"
