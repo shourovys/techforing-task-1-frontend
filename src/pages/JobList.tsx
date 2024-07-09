@@ -1,4 +1,3 @@
-// src/pages/JobList.tsx
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Accordion,
@@ -15,14 +14,14 @@ import {
 import React, { useEffect } from 'react';
 import JobDetails from '../components/JobDetails.tsx';
 import JobForm from '../components/JobForm.tsx';
-import { Job } from '../contexts/JobContext.tsx';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks.ts';
 import {
   fetchJobs,
+  Job,
   setOpenCreateModal,
   setOpenDetailsModal,
   setSelectedJob,
-} from '../features/jobSlice.ts';
-import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks.ts';
+} from '../slices/jobSlice.ts';
 
 const JobList: React.FC = () => {
   const dispatch = useAppDispatch();

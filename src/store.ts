@@ -1,14 +1,15 @@
-// src/store.ts
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import jobReducer from './features/jobSlice.ts';
+import authReducer from './slices/authSlice.ts';
+import jobReducer from './slices/jobSlice.ts';
 
 export const store = configureStore({
   reducer: {
     jobs: jobReducer,
+    auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // Disable serializable check if needed
+      serializableCheck: false,
     }),
   devTools: process.env.NODE_ENV !== 'production',
 });

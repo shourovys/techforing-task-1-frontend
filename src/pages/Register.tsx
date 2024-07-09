@@ -9,7 +9,8 @@ import {
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext.tsx';
+import { useAppDispatch } from '../hooks/reduxHooks.ts';
+import { register } from '../slices/authSlice.ts';
 
 interface IFormInput {
   email: string;
@@ -17,11 +18,11 @@ interface IFormInput {
 }
 
 const Register: React.FC = () => {
-  const { register: registerUser } = useAuth();
+  const dispatch = useAppDispatch();
   const { control, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit = async (data: IFormInput) => {
-    await registerUser(data.email, data.password);
+    await dispatch(register(data));
   };
 
   return (

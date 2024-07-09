@@ -1,7 +1,7 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
 import React from 'react';
-import { deleteJob, Job, setOpenEditModal } from '../features/jobSlice.ts';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks.ts';
+import { deleteJob, Job, setOpenEditModal } from '../slices/jobSlice.ts';
 import JobForm from './JobForm.tsx';
 
 interface IProps {

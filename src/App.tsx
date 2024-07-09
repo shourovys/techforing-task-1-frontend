@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Routes,
 } from 'react-router-dom';
-import { AuthProvider, useAuth } from './contexts/AuthContext.tsx';
+import { useAppSelector } from './hooks/reduxHooks.ts';
 import JobList from './pages/JobList.tsx';
 import Login from './pages/Login.tsx';
 import Register from './pages/Register.tsx';
@@ -13,7 +13,7 @@ import Register from './pages/Register.tsx';
 const PrivateRoute: React.FC<{ children: React.ReactElement }> = ({
   children,
 }) => {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading } = useAppSelector((state) => state.auth);
 
   if (isLoading) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
@@ -24,20 +24,18 @@ const PrivateRoute: React.FC<{ children: React.ReactElement }> = ({
 
 const App: React.FC = () => (
   <Router>
-    <AuthProvider>
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route
-          path='/'
-          element={
-            <PrivateRoute>
-              <JobList />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </AuthProvider>
+    <Routes>
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
+      <Route
+        path='/'
+        element={
+          <PrivateRoute>
+            <JobList />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
   </Router>
 );
 

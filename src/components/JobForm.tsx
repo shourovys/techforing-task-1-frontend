@@ -12,8 +12,8 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { createJob, IFormInput, Job, updateJob } from '../features/jobSlice.ts';
 import { useAppDispatch } from '../hooks/reduxHooks.ts';
+import { createJob, IFormInput, Job, updateJob } from '../slices/jobSlice.ts';
 
 const departments = [
   { id: 1, department: 'Digital Marketing' },
