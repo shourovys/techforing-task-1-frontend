@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAppDispatch } from '../hooks/reduxHooks.ts';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks.ts';
 import { login } from '../slices/authSlice.ts';
 
 interface IFormInput {
@@ -19,6 +19,7 @@ interface IFormInput {
 
 const Login: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { error } = useAppSelector((state) => state.auth);
   const { control, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit = async (data: IFormInput) => {
@@ -37,6 +38,9 @@ const Login: React.FC = () => {
         <Typography variant='h5' component='h1' gutterBottom>
           Login
         </Typography>
+        {error && (
+          <Typography color='error'>{JSON.stringify(error)}</Typography>
+        )}
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name='email'
